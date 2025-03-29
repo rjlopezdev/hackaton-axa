@@ -2,7 +2,8 @@ import {
   Component,
   ViewChild,
   ElementRef,
-  AfterViewChecked
+  AfterViewChecked,
+  OnInit,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
@@ -21,7 +22,7 @@ interface Message {
   templateUrl: "./chatbot.component.html",
   styleUrls: ["./chatbot.component.css"],
 })
-export class ChatbotComponent implements AfterViewChecked {
+export class ChatbotComponent implements AfterViewChecked, OnInit {
   @ViewChild("messagesContainer") private messagesContainer!: ElementRef;
   messages: Message[] = [];
   newMessage = "";
@@ -29,6 +30,14 @@ export class ChatbotComponent implements AfterViewChecked {
   private shouldScroll = false;
 
   constructor(private aiService: AIService) {}
+  ngOnInit(): void {
+    this.messages.push({
+      content:
+        "¡Hola! Soy el asistente virtual de AXA. ¿En qué puedo ayudarte hoy?",
+      isUser: false,
+      timestamp: new Date(),
+    });
+  }
 
   ngAfterViewChecked() {
     if (this.shouldScroll) {
@@ -61,7 +70,7 @@ export class ChatbotComponent implements AfterViewChecked {
     // Enviar mensaje al backend
     const userEmail = localStorage.getItem("userEmail") || "guest@example.com";
     this.isLoading = true;
-    
+
     this.aiService.sendMessage(userEmail, messageContent).subscribe({
       next: (response) => {
         // Añadir respuesta del bot
@@ -76,7 +85,8 @@ export class ChatbotComponent implements AfterViewChecked {
       error: (error) => {
         console.error("Error getting AI response:", error);
         this.messages.push({
-          content: "Lo siento, ha ocurrido un error al procesar tu mensaje. Por favor, intenta de nuevo.",
+          content:
+            "Lo siento, ha ocurrido un error al procesar tu mensaje. Por favor, intenta de nuevo.",
           isUser: false,
           timestamp: new Date(),
         });
