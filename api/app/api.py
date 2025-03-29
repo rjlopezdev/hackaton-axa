@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
+from agent.ui_main import obtener_respuesta_agente_salud
 
 app = Flask(__name__)
 CORS(app)
@@ -18,8 +19,8 @@ def ai_assistant():
     if not prompt or not email:
         return jsonify({"error": "Missing prompt or email"}), 400
     
-    # Simulación de respuesta de IA
-    response = f"AI Response to: {prompt}"
+    # Get response from the UI agent
+    response = obtener_respuesta_agente_salud(prompt)
     
     return jsonify({
         "email": email,

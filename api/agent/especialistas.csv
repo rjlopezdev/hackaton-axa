@@ -1,0 +1,6 @@
+CP;Profesion;Nombre;Especialidad;Qos;Dia_Cita;Hora_Cita;Dirección
+28003;Medico;Juan García;Pediatría;5;2025-03-30;08:30:00;Hospital Universitario ficticio, Avenida de la constitución nº 15 (Madrid, Madrid), Planta 2, Consulta 13
+28003;Medico;Juan García;Medico Cabecera;5;2025-03-30;10:00:00;Hospital Universitario ficticio, Avenida de la constitución nº 15 (Madrid, Madrid), Planta 3, Consulta 5
+28004;Enfermero;Ana Martínez;Urgencias;4;2025-03-30;12:00:00;Hospital de Urgencias, Calle de la Salud nº 45 (Madrid, Madrid), Planta 1, Consulta 2
+28005;Medico;Carlos López;Cardiología;5;2025-03-30;15:00:00;Clínica Cardiológica, Avenida del Corazón nº 10 (Madrid, Madrid), Planta 3, Consulta 4
+28006;Enfermero;Laura Pérez;Ginecología;4;2025-03-30;16:30:00;Centro Ginecológico, Calle de las Flores nº 20 (Madrid, Madrid), Planta 4, Consulta 8
