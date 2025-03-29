@@ -12,33 +12,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   email: string = '';
-  password: string = '';
-  isGuestMode: boolean = false;
 
   constructor(private router: Router) {}
 
   onSubmit() {
-    if (this.isGuestMode) {
-      // Store guest mode in localStorage
-      localStorage.setItem('isGuestMode', 'true');
-      this.router.navigate(['/chatbot']);
-      return;
-    }
-
-    // Here you would typically make an API call to authenticate
-    // For demo purposes, we'll just check if email and password are provided
-    if (this.email && this.password) {
+    // Aquí normalmente harías una validación y llamada a API
+    // Para esta demo, solo verificamos que el email esté presente
+    if (this.email) {
       localStorage.setItem('isGuestMode', 'false');
       localStorage.setItem('userEmail', this.email);
       this.router.navigate(['/chatbot']);
     }
   }
 
-  toggleGuestMode() {
-    this.isGuestMode = !this.isGuestMode;
-    if (this.isGuestMode) {
-      this.email = '';
-      this.password = '';
-    }
+  loginAsGuest() {
+    // Almacenar el modo invitado en localStorage
+    localStorage.setItem('isGuestMode', 'true');
+    localStorage.removeItem('userEmail'); // Eliminamos cualquier email almacenado previamente
+    this.router.navigate(['/chatbot']);
   }
 }

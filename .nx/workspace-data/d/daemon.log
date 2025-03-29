@@ -473,3 +473,15 @@ Error [ERR_STREAM_DESTROYED]: Cannot call write after a stream was destroyed
 [NX v20.6.4 Daemon Server] - 2025-03-29T12:18:25.341Z - [WATCHER]: Stopping the watcher for /Users/rjlopez/dev/hackaton/hackaton-axa (sources)
 [NX v20.6.4 Daemon Server] - 2025-03-29T12:18:25.341Z - [WATCHER]: Stopping the watcher for /Users/rjlopez/dev/hackaton/hackaton-axa (outputs)
 [NX v20.6.4 Daemon Server] - 2025-03-29T12:18:25.342Z - Server stopped because: "Stopping the daemon the set of ignored files changed (native)"
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.115Z - Started listening on: \\.\pipe\nx\C:\Users\ingos\AppData\Local\Temp\7face4b341a7f8b1a647\d.sock
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.117Z - [WATCHER]: Subscribed to changes within: C:\Users\ingos\Documents\Hackaton\hackaton-axa (native)
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.126Z - Established a connection. Number of open connections: 1
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.128Z - Closed a connection. Number of open connections: 0
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.128Z - Established a connection. Number of open connections: 1
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.132Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.133Z - Done responding to the client Shutdown initiated
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.134Z - Handled FORCE_SHUTDOWN. Handling time: 1. Response time: 2.
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.134Z - Closed a connection. Number of open connections: 0
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.135Z - [WATCHER]: Stopping the watcher for C:\Users\ingos\Documents\Hackaton\hackaton-axa (sources)
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.135Z - [WATCHER]: Stopping the watcher for C:\Users\ingos\Documents\Hackaton\hackaton-axa (outputs)
+[NX v20.6.4 Daemon Server] - 2025-03-29T12:22:25.136Z - Server stopped because: "Request to shutdown"

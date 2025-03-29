@@ -1,0 +1,34 @@
+/* Estilos específicos para el dashboard */
+
+/* Animaciones para las tarjetas de seguros */
+@keyframes cardHover {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .insurance-card:hover {
+    animation: cardHover 0.3s ease-in-out;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Transiciones suaves para todos los elementos interactivos */
+  a, button {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Mejoras visuales para el contenedor del dashboard */
+  .dashboard-container {
+    min-height: calc(100vh - 64px); /* Altura total menos el header */
+  }
+  
+  /* Scroll suave para el contenido */
+  html {
+    scroll-behavior: smooth;
+  }

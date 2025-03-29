@@ -1,0 +1,21 @@
+/* Los estilos principales están en Tailwind, este archivo puede quedarse vacío */
+/* Si necesitas algún estilo específico que no pueda hacerse con Tailwind, puedes añadirlo aquí */
+
+/* Animación personalizada para el botón de login */
+@keyframes pulse-blue {
+    0%, 100% {
+      background-color: #2563eb;
+    }
+    50% {
+      background-color: #3b82f6;
+    }
+  }
+  
+  .login-button-pulse:hover {
+    animation: pulse-blue 2s infinite;
+  }
+  
+  /* Sombra mejorada para la caja de login */
+  .enhanced-shadow {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }

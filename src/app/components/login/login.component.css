@@ -1,85 +1,21 @@
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+/* Los estilos principales están en Tailwind, este archivo puede quedarse vacío */
+/* Si necesitas algún estilo específico que no pueda hacerse con Tailwind, puedes añadirlo aquí */
+
+/* Animación personalizada para el botón de login */
+@keyframes pulse-blue {
+  0%, 100% {
+    background-color: #2563eb;
+  }
+  50% {
+    background-color: #3b82f6;
+  }
 }
 
-.logo-container {
-  text-align: center;
-  margin-bottom: 1.5rem;
+.login-button-pulse:hover {
+  animation: pulse-blue 2s infinite;
 }
 
-.logo-image {
-  max-width: 200px;
-  height: auto;
+/* Sombra mejorada para la caja de login */
+.enhanced-shadow {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
-
-.login-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 1.5rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #666;
-}
-
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-input[type="email"]:focus,
-input[type="password"]:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-.guest-mode {
-  margin: 1rem 0;
-}
-
-.guest-mode label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-button:hover {
-  background-color: #0056b3;
-} 

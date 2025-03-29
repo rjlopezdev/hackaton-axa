@@ -55,10 +55,10 @@
             "options": {
               "cwd": "e2e",
               "env": {
-                "PLAYWRIGHT_HTML_OUTPUT_DIR": "../dist/.playwright/e2e/playwright-report/src-example-spec-ts",
-                "PLAYWRIGHT_HTML_REPORT": "../dist/.playwright/e2e/playwright-report/src-example-spec-ts"
+                "PLAYWRIGHT_HTML_OUTPUT_DIR": "..\\dist\\.playwright\\e2e\\playwright-report\\src-example-spec-ts",
+                "PLAYWRIGHT_HTML_REPORT": "..\\dist\\.playwright\\e2e\\playwright-report\\src-example-spec-ts"
               },
-              "command": "playwright test src/example.spec.ts --output=../dist/.playwright/e2e/test-output/src-example-spec-ts"
+              "command": "playwright test src/example.spec.ts --output=..\\dist\\.playwright\\e2e\\test-output\\src-example-spec-ts"
             },
             "parallelism": true,
             "metadata": {
@@ -33555,5 +33555,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1743250702992
+  "computedAt": 1743251900826
 }
