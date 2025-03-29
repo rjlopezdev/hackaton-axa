@@ -28,11 +28,8 @@ export class LoginComponent {
       localStorage.setItem('isGuestMode', 'false');
       localStorage.setItem('userEmail', this.email);
       
-      // Navegar al dashboard - uso setTimeout para asegurar que se complete el ciclo
-      setTimeout(() => {
-        console.log('Redirigiendo a dashboard...');
-        this.router.navigateByUrl('/dashboard');
-      }, 100);
+      console.log("Redirigiendo a dashboard...");
+      this.router.navigateByUrl("/dashboard");
     }
   }
 
@@ -43,10 +40,6 @@ export class LoginComponent {
     localStorage.setItem('isGuestMode', 'true');
     localStorage.removeItem('userEmail');
     
-    // Navegar al dashboard - uso setTimeout para asegurar que se complete el ciclo
-    setTimeout(() => {
-      console.log('Redirigiendo a dashboard como invitado...');
-      this.router.navigateByUrl('/chatbot');
-    }, 100);
+    this.router.navigateByUrl("/chatbot");
   }
 }

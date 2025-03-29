@@ -21,35 +21,29 @@ const authGuard = () => {
 
 export const appRoutes: Routes = [
   // Ruta raíz redirecciona basado en autenticación
-  { 
-    path: '', 
-    redirectTo: '/dashboard', 
-    pathMatch: 'full'
+  {
+    path: "",
+    redirectTo: "/dashboard",
+    pathMatch: "full",
   },
-  
+
   // Ruta de login - siempre accesible
-  { 
-    path: 'login', 
-    component: LoginComponent 
+  {
+    path: "login",
+    component: LoginComponent,
   },
-  
+
   // Ruta del chatbot - protegida
   {
-    path: 'chatbot',
+    path: "chatbot",
     component: ChatbotComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
-  
+
   // Ruta del dashboard - protegida
   {
-    path: 'dashboard',
+    path: "dashboard",
     component: DashboardComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
-  
-  // Cualquier otra ruta no definida redirige al dashboard si está autenticado, o al login si no
-  { 
-    path: '**', 
-    redirectTo: '/dashboard'
-  }
 ];
