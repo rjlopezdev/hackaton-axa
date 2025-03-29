@@ -1,1 +1,108 @@
-<p>login works!</p>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <div class="text-center">
+        <img class="mx-auto h-20 w-auto" src="assets/images/axa-logo.png" alt="AXA Logo">
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          Inicia sesión en tu cuenta
+        </h2>
+        <p class="mt-2 text-center text-sm text-gray-600">
+          O
+          <a [routerLink]="['/register']" class="font-medium text-axa-blue hover:text-axa-red">
+            regístrate si aún no tienes una
+          </a>
+        </p>
+      </div>
+      <form class="mt-8 space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="rounded-md shadow-sm -space-y-px">
+          <div>
+            <label for="email-address" class="sr-only">Correo electrónico</label>
+            <input id="email-address" formControlName="email" name="email" type="email" autocomplete="email" required
+              class="input-field rounded-t-md" placeholder="Correo electrónico">
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-red-500 text-xs mt-1">
+              <div *ngIf="email?.errors?.['required']">El correo electrónico es obligatorio</div>
+              <div *ngIf="email?.errors?.['email']">Ingrese un correo electrónico válido</div>
+            </div>
+          </div>
+          <div>
+            <label for="password" class="sr-only">Contraseña</label>
+            <input id="password" formControlName="password" name="password" type="password" autocomplete="current-password" required
+              class="input-field rounded-b-md" placeholder="Contraseña">
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-red-500 text-xs mt-1">
+              <div *ngIf="password?.errors?.['required']">La contraseña es obligatoria</div>
+              <div *ngIf="password?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input id="remember-me" name="remember-me" type="checkbox"
+              class="h-4 w-4 text-axa-blue focus:ring-axa-blue border-gray-300 rounded">
+            <label for="remember-me" class="ml-2 block text-sm text-gray-900">
+              Recordarme
+            </label>
+          </div>
+  
+          <div class="text-sm">
+            <a href="#" class="font-medium text-axa-blue hover:text-axa-red">
+              ¿Olvidaste tu contraseña?
+            </a>
+          </div>
+        </div>
+  
+        <div>
+          <button type="submit" [disabled]="loginForm.invalid"
+            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-axa-blue hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-axa-blue"
+            [ngClass]="{'opacity-50 cursor-not-allowed': loginForm.invalid}">
+            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+              <!-- Lock icon -->
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                  clip-rule="evenodd" />
+              </svg>
+            </span>
+            Iniciar sesión
+          </button>
+        </div>
+      </form>
+  
+      <div class="mt-6">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-2 bg-gray-50 text-gray-500">
+              O continúa con
+            </span>
+          </div>
+        </div>
+  
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          <div>
+            <button
+              class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+              <span class="sr-only">Iniciar sesión con Google</span>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" />
+              </svg>
+            </button>
+          </div>
+  
+          <div>
+            <button
+              class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+              <span class="sr-only">Iniciar sesión con Microsoft</span>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zM24 11.4H12.6V0H24v11.4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
