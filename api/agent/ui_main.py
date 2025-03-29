@@ -142,12 +142,12 @@ if __name__ == "__main__":
         df_usuario = valida_usuario(df_usuarios, email)
 
         # Calcular la edad
-        edad = datetime.now().year - int(df_usuario["Fecha de Nacimiento"])
+        edad = datetime.now().year - int(df_usuario["Fecha de Nacimiento"].iloc[0])
         cp = df_usuario["Código Postal"].iloc[0]
         profesion = df_usuario["Profesion"].iloc[0]
 
         df_polizas = pd.read_csv("./polizas_usuario.csv", encoding="utf-8")
-        df_ids_polizas = valores_correo = df_polizas['numero_poliza']
+        df_ids_polizas = df_polizas[df_polizas["Correo"] == email]["numero_poliza"]  # Corregido aquí
 
         lista_ids_polizas = df_ids_polizas.tolist()
 
