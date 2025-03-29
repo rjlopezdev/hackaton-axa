@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  AfterViewChecked,
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 import { AIService } from "../../services/ai.service";
 
 interface Message {
@@ -16,12 +21,28 @@ interface Message {
   templateUrl: "./chatbot.component.html",
   styleUrls: ["./chatbot.component.css"],
 })
-export class ChatbotComponent {
+export class ChatbotComponent implements AfterViewChecked {
+  @ViewChild("messagesContainer") private messagesContainer!: ElementRef;
   messages: Message[] = [];
   newMessage = "";
   isLoading = false;
+  private shouldScroll = false;
 
   constructor(private aiService: AIService) {}
+
+  ngAfterViewChecked() {
+    if (this.shouldScroll) {
+      this.scrollToBottom();
+      this.shouldScroll = false;
+    }
+  }
+
+  private scrollToBottom(): void {
+    try {
+      this.messagesContainer.nativeElement.scrollTop =
+        this.messagesContainer.nativeElement.scrollHeight;
+    } catch (err) {}
+  }
 
   sendMessage() {
     if (!this.newMessage.trim()) return;
@@ -35,6 +56,7 @@ export class ChatbotComponent {
       isUser: true,
       timestamp: new Date(),
     });
+    this.shouldScroll = true;
 
     // Get AI response
     this.isLoading = true;
@@ -46,6 +68,7 @@ export class ChatbotComponent {
           timestamp: new Date(),
         });
         this.isLoading = false;
+        this.shouldScroll = true;
       },
       error: (error) => {
         console.error("Error getting AI response:", error);
@@ -56,6 +79,7 @@ export class ChatbotComponent {
           timestamp: new Date(),
         });
         this.isLoading = false;
+        this.shouldScroll = true;
       },
     });
 
