@@ -19,59 +19,34 @@
   "fileMap": {
     "nonProjectFiles": [],
     "projectFileMap": {
-      "e2e": [
-        {
-          "file": "e2e/eslint.config.mjs",
-          "hash": "2785696988144454133",
-          "deps": [
-            "npm:eslint-plugin-playwright"
-          ]
-        },
-        {
-          "file": "e2e/playwright.config.ts",
-          "hash": "8668603006253693654",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "e2e/project.json",
-          "hash": "7892332685488620801"
-        },
-        {
-          "file": "e2e/src/example.spec.ts",
-          "hash": "1909365745453809229",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        },
-        {
-          "file": "e2e/tsconfig.json",
-          "hash": "6611389094712596739"
-        }
-      ],
       "axa": [
         {
           "file": ".DS_Store",
           "hash": "12713400424831882183"
         },
         {
-          "file": ".angular/cache/19.2.5/axa/.tsbuildinfo",
-          "hash": "17352084555380091690"
-        },
-        {
-          "file": ".angular/cache/19.2.5/axa/vite/deps_temp_797da75e/package.json",
-          "hash": "8630294688235076505"
-        },
-        {
           "file": ".gitignore",
-          "hash": "13404745306227114823"
+          "hash": "1606930168331493902"
         },
         {
           "file": "README.md",
           "hash": "14577318517342308943"
+        },
+        {
+          "file": "api/app/__init__.py",
+          "hash": "6957146478955326681"
+        },
+        {
+          "file": "api/app/api.py",
+          "hash": "11864684546592106082"
+        },
+        {
+          "file": "api/requirements.txt",
+          "hash": "10074554244238024468"
+        },
+        {
+          "file": "api/run.py",
+          "hash": "7537002429815123673"
         },
         {
           "file": "eslint.config.mjs",
@@ -201,7 +176,7 @@
         },
         {
           "file": "src/app/app.component.ts",
-          "hash": "4528896787979434864",
+          "hash": "10130841125052711212",
           "deps": [
             "npm:@angular/core",
             "npm:@angular/router"
@@ -209,7 +184,7 @@
         },
         {
           "file": "src/app/app.config.ts",
-          "hash": "2061310302555965946",
+          "hash": "2357152898726907010",
           "deps": [
             "npm:@angular/core",
             "npm:@angular/router"
@@ -217,7 +192,7 @@
         },
         {
           "file": "src/app/app.routes.ts",
-          "hash": "16761180174072536836",
+          "hash": "1745423262012049527",
           "deps": [
             "npm:@angular/router"
           ]
@@ -266,7 +241,7 @@
         },
         {
           "file": "src/app/components/login/login.component.ts",
-          "hash": "1848850085941333663",
+          "hash": "10052231192679428264",
           "deps": [
             "npm:@angular/core",
             "npm:@angular/common",
@@ -315,6 +290,39 @@
         {
           "file": "tsconfig.spec.json",
           "hash": "1293240435771606091"
+        }
+      ],
+      "e2e": [
+        {
+          "file": "e2e/eslint.config.mjs",
+          "hash": "2785696988144454133",
+          "deps": [
+            "npm:eslint-plugin-playwright"
+          ]
+        },
+        {
+          "file": "e2e/playwright.config.ts",
+          "hash": "8668603006253693654",
+          "deps": [
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "e2e/project.json",
+          "hash": "7892332685488620801"
+        },
+        {
+          "file": "e2e/src/example.spec.ts",
+          "hash": "1909365745453809229",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        },
+        {
+          "file": "e2e/tsconfig.json",
+          "hash": "6611389094712596739"
         }
       ]
     }
