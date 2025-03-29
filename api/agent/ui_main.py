@@ -118,6 +118,8 @@ agente_salud = Agent(
         uno que indica el fin del chat, y otro que indica la especialidad del médico o psicólogo elegido, así:
         (fin_de_conver)
         (inserta_especialista) 
+
+        inserta_especialista tiene que ser un valor de los siguiente: medico_cabecera, pediatra, cardiologo o neumologo
     \
     """),
     markdown=False,
@@ -180,45 +182,53 @@ if __name__ == "__main__":
                     mensaje_hacia_agente = "(Inicio de la cadena de texto)\n"
                     mensaje_hacia_agente = mensaje_hacia_agente + f"CR:{cr}\n{str(edad)};{str(cp)};{profesion}"
                     mensaje_hacia_agente = mensaje_hacia_agente + "\n(Final cadena de texto)"
-                    print(mensaje_hacia_agente)
                     respuesta_agente = obtener_respuesta_agente_salud(mensaje_hacia_agente)
-                    print(respuesta_agente)
+                    print(respuesta_agente.split("(fin_de_conver)")[0].rstrip('\n'))
 
-                df_medicos = pd.read_csv("./especialistas.csv", sep=';')
+                df_medicos = pd.read_csv("./especialistas.csv", sep=',')
 
-                respuesta_agente_especialidad = respuesta_agente.split("(fin_de_conver)")[1]
+                respuesta_agente_especialidad = respuesta_agente.split("(fin_de_conver)")[1].replace("\n", "").replace('(', '').replace(')', '').strip()
 
-                filtro_especialidad = df_medicos[(df_medicos['codigo postal'] == cp) & (df_medicos['especialidad'] == respuesta_agente_especialidad)]
+                respuesta_agente_especialidad = unicodedata.normalize('NFKD', respuesta_agente_especialidad)
+                respuesta_agente_especialidad = ''.join(c for c in respuesta_agente_especialidad if unicodedata.category(c) != 'Mn').lower()
 
-                # Si no hay resultados con la especialidad solicitada, buscar "Medico Cabecera"
+                filtro_especialidad = df_medicos[df_medicos['Especialidad'] == respuesta_agente_especialidad]
+                filtro_especialidad = filtro_especialidad[filtro_especialidad['CP'] == str(cp)]
+
+                # Si no hay resultados con la especialidad solicitada, buscar "medico_cabecera"
                 if filtro_especialidad.empty:
                     print(f"No obstante, sería convieniente que previamente le valore un médico de antención de primaria")
-                    filtro_especialidad = df_medicos[(df_medicos['codigo postal'] == cp) & (df_medicos['especialidad'] == 'Medico Cabecera')]
+                    filtro_especialidad = df_medicos[df_medicos['Especialidad'] == 'medico_cabecera']
+                    filtro_especialidad = filtro_especialidad[filtro_especialidad['CP'] == str(cp)]
 
-                filtro_especialidad = filtro_especialidad.sort_values(by=['Dia_Cita', 'Hora_Cita','Qos'], ascending=[True, False]).iloc[0]
-                filtro_especialidad = filtro_especialidad.drop_duplicates(subset=['Dia_Cita', 'Hora_Cita'], keep='first')
+                filtro_especialidad = filtro_especialidad.sort_values(by=['Dia_Cita', 'Hora_Cita','Qos'], ascending=[True, True, False])
+                if filtro_especialidad.empty:
+                    print("Lo siento, no quedan más citas disponibles")
+                else:
+                    filtro_especialidad = filtro_especialidad.iloc[0]
+                    filtro_especialidad = filtro_especialidad.drop_duplicates(subset=['Dia_Cita', 'Hora_Cita'], keep='first')
 
-                si_no = ""
-                i = 0
-                no_reservado = False
+                    si_no = ""
+                    i = 0
+                    no_reservado = False
 
-                while not 's' in si_no:
-                    cita_asignada = filtro_especialidad[i]
-                    i = i + 1
-                    print(f"¿Podría asistir en el tramo horario {cita_asignada['Cita']} en {cita_asignada['Dirección']}?")
-                    while not 's' in si_no and not 'n' in si_no:
-                        si_no = input("")
-                    if 0 == filtro_especialidad.shape[0]:
-                        print("Lo siento, no quedan más citas disponibles")
-                        no_reservado = True
-                        break
+                    while not 's' in si_no:
+                        cita_asignada = filtro_especialidad[i]
+                        i = i + 1
+                        print(f"¿Podría asistir en el tramo horario {cita_asignada['Cita']} en {cita_asignada['Dirección']}?")
+                        while not 's' in si_no and not 'n' in si_no:
+                            si_no = input("")
+                        if 0 == filtro_especialidad.shape[0]:
+                            print("Lo siento, no quedan más citas disponibles")
+                            no_reservado = True
+                            break
 
-                if no_reservado == False:
-                    print("Estupendo, cita reservada")
+                    if no_reservado == False:
+                        print("Estupendo, cita reservada")
 
-                # Acaba la conversación
-                while True:
-                    pass
+                    # Acaba la conversación
+                    while True:
+                        pass
 
             else:
                 print("No tiene contratado ese tipo de seguro ¿desea contratarlo?")

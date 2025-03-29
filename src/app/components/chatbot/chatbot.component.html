@@ -1,7 +1,7 @@
 <div class="flex flex-col h-screen bg-gray-50 rounded-lg shadow-lg overflow-hidden border border-gray-200">
   <!-- Chat Header -->
-  <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-4">
-    <h2 class="text-xl font-semibold text-white">AI Assistant</h2>
+  <div class="bg-gradient-to-r from-axa-blue to-axa-blue-light p-4">
+    <h2 class="text-xl font-semibold text-white">axAI</h2>
     <p class="text-blue-100 text-sm">¿En qué puedo ayudarte hoy?</p>
   </div>
 
@@ -10,12 +10,12 @@
     <div *ngFor="let message of messages" 
          [class.justify-end]="message.isUser"
          class="flex">
-      <div *ngIf="!message.isUser" class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white mr-2">
+      <div *ngIf="!message.isUser" class="w-8 h-8 rounded-full bg-axa-blue flex items-center justify-center text-white mr-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
         </svg>
       </div>
-      <div [class.bg-blue-600]="message.isUser"
+      <div [class.bg-axa-blue]="message.isUser"
            [class.bg-white]="!message.isUser"
            [class.text-white]="message.isUser"
            [class.text-gray-800]="!message.isUser"
@@ -26,23 +26,23 @@
           {{ message.timestamp | date:'short' }}
         </span>
       </div>
-      <div *ngIf="message.isUser" class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white ml-2">
+      <div *ngIf="message.isUser" class="w-8 h-8 rounded-full bg-axa-blue flex items-center justify-center text-white ml-2">
         <span class="text-sm font-bold">U</span>
       </div>
     </div>
     
     <!-- Loading Indicator -->
     <div *ngIf="isLoading" class="flex justify-start">
-      <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white mr-2">
+      <div class="w-8 h-8 rounded-full bg-axa-blue flex items-center justify-center text-white mr-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
         </svg>
       </div>
       <div class="bg-white rounded-lg p-3 shadow-sm">
         <div class="flex space-x-2">
-          <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
-          <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-          <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+          <div class="w-2 h-2 bg-axa-blue rounded-full animate-bounce"></div>
+          <div class="w-2 h-2 bg-axa-blue rounded-full animate-bounce [animation-delay:0.2s]"></div>
+          <div class="w-2 h-2 bg-axa-blue rounded-full animate-bounce [animation-delay:0.4s]"></div>
         </div>
       </div>
     </div>
@@ -55,12 +55,12 @@
         [(ngModel)]="newMessage"
         (keydown)="onKeyPress($event)"
         placeholder="Escribe tu mensaje aquí..."
-        class="flex-1 resize-none rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+        class="flex-1 resize-none rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-axa-blue transition-all duration-200"
         rows="1"
       ></textarea>
       <button
         (click)="sendMessage()"
-        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+        class="bg-axa-blue text-white px-4 py-2 rounded-lg hover:bg-axa-blue-light transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
         [disabled]="!newMessage.trim() || isLoading"
       >
         <span>Enviar</span>
